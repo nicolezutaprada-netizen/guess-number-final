@@ -17,7 +17,6 @@ function mostrarMensaje(texto, color) {
 // Prueba la función
 mostrarMensaje('¡Bienvenido al juego!', '#e94560');
 
-
 // --- Variables del juego ---
 let numeroSecreto = Math.floor(Math.random() * 100) + 1;
 let intentos = 0;
@@ -25,7 +24,12 @@ let historialIntentos = [];
 
 console.log('(DEBUG) Número secreto:', numeroSecreto);
 
- // Validar entrada
+// --- Función principal ---
+function verificarIntento() {
+
+  const valor = Number(inputIntento.value);
+
+  // Validar entrada
   if (isNaN(valor) || valor < 1 || valor > 100) {
     mostrarMensaje('⚠️ Ingresa un número del 1 al 100', 'orange');
     return;
@@ -57,3 +61,17 @@ console.log('(DEBUG) Número secreto:', numeroSecreto);
   inputIntento.value = '';
   inputIntento.focus();
 }
+
+// --- Conectar eventos ---
+btnAdivinar.addEventListener('click', verificarIntento);
+
+// --- Enter también funciona ---
+inputIntento.addEventListener('keypress', function(evento) {
+  if (evento.key === 'Enter') {
+    verificarIntento();
+  }
+});
+
+
+
+
