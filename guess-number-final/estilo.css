@@ -118,4 +118,19 @@ body {
       input { width: 80%; }
       button { width: 80%; }
     }
+
+    .historial {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  justify-content: center;
+  margin-top: 20px;
+  min-height: 30px;
+}
+.guess-pill {
+  padding: 4px 12px;
+  border-radius: 20px;
+  font-size: 13px;
+  font-weight: bold;
+}
       
