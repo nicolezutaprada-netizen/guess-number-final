@@ -5,6 +5,7 @@ const contador = document.getElementById('contador');
 const historial = document.getElementById('historial');
 const btnReiniciar = document.getElementById('btnReiniciar');
 const tarjeta = document.getElementById('game-card');
+const mejorPuntajeEl = document.getElementById('mejorPuntaje');
 
 console.log('Elementos conectados:', inputIntento, btnAdivinar, mensaje);
 
@@ -20,6 +21,7 @@ mostrarMensaje('¡Bienvenido al juego!', '#e94560');
 let numeroSecreto = Math.floor(Math.random() * 100) + 1;
 let intentos = 0;
 let historialIntentos = [];
+let mejorPuntajeNum = Infinity;
 
 console.log('(DEBUG) Número secreto:', numeroSecreto);
 
@@ -81,6 +83,12 @@ function verificarIntento() {
     btnReiniciar.style.display = 'inline-block';
     tarjeta.style.borderColor = '#00ff88';
     tarjeta.style.boxShadow = '0 0 40px rgba(0, 255, 136, 0.3)';
+
+    // Actualizar mejor puntaje
+    if (intentos < mejorPuntajeNum) {
+      mejorPuntajeNum = intentos;
+      mejorPuntajeEl.textContent = 'Mejor puntaje: ' + mejorPuntajeNum + ' intentos 🏆';
+    }
   } else if (valor > numeroSecreto) {
     let pista = obtenerPista(valor, numeroSecreto);
     mostrarMensaje('📈 Muy alto. ' + pista, '#ff6b6b');
